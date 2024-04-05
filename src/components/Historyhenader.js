@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Header.css'
+import image from '../assets/maleicon.png'
 import { Link } from 'react-router-dom';
 function Header() {
 
@@ -20,14 +21,14 @@ function Header() {
       }
     }
   }
-
+               
   return (
     <header>
       <div class="main">
         <nav class="left">
           <span>CamSafe</span>
           <ul className='nav-op'>
-            <li><Link to="/">Home</Link></li>
+          <li><Link to="/">Home</Link></li>
             <li><Link to="/history">Records</Link></li>
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
@@ -45,8 +46,14 @@ function Header() {
               <Link to="/contact">Contact Us</Link>
               </div>
             </div>
-            <button class="btnn"><Link to="/signup">User</Link></button>
-            <button class="btnn"><Link to="/adminsignup">Admin</Link></button>
+            <span className='avtar'>
+              <div className='icon'>Pasta Haha
+                <img src={image} />
+                <button class="btnn2"> <a href="https://www.youtube.com/watch?v=JvC7aA24m4Q&list=PLu0W_9lII9agx66oZnT6IyhcMIbUMNMdt&index=4">Logout</a> </button>
+              </div>
+            </span> 
+
+            
           </ul>
         </nav>
       </div>

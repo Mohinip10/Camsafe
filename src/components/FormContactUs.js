@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './FormContactUs.css';
 import { useFormik } from 'formik';
 import { signUpSchema } from '../schemas';
+import axios from 'axios';
 
 const initialValues = {
   name: '',
@@ -23,14 +24,19 @@ function FormContactUs() {
   } = useFormik({
     initialValues,
     validationSchema: signUpSchema,
-    onSubmit: (values, action) => {
-      console.log('Form submitted:', values);
-      // Assuming you have a function to send data to the backend
-      
+    onSubmit: async (values, action) => {
+      try {
+        console.log('Form submitted:', values);
+        // Assuming you have a backend API endpoint for form submission
+        const response = await axios.post('http://127.0.0.1:8000/api/contact_us/', values);
+        console.log('Server response:', response.data);
 
-      // Reset form and clear state
-      resetForm();
-      setFormData(initialValues);
+        // Reset form and clear state
+        resetForm();
+        setFormData(initialValues);
+      } catch (error) {
+        console.error('Error submitting form:', error);
+      }
     },
   });
 
